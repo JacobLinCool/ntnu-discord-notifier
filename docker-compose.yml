@@ -6,6 +6,7 @@ services:
     build:
       context: .
       target: notifier
+    image: jacoblincool/ntnu-discord-notifier
     container_name: ntnu-discord-notifier
     env_file:
       - .env
