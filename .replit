@@ -1,0 +1,18 @@
+run = "pnpm start >> output.log 2>&1 & pnpx serve ."
+
+[env]
+XDG_CONFIG_HOME = "/home/runner/.config"
+
+[nix]
+channel = "stable-22_05"
+
+[gitHubImport]
+requiredFiles = [".replit", "replit.nix", ".config"]
+
+[languages]
+
+[languages.typescript]
+pattern = "**/{*.ts,*.js,*.tsx,*.jsx}"
+
+[languages.typescript.languageServer]
+start = "typescript-language-server --stdio"
