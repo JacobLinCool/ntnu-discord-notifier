@@ -1,0 +1,20 @@
+name = "ntnu-discord-notifier"
+compatibility_date = "2022-08-26"
+node_compat = true
+
+main = "./dist/worker.mjs"
+
+kv_namespaces = [
+  { binding = "kv", id = "ddbcd17bce9441c58141430e6d12ffd9" }
+]
+
+# My free tier has used up all the free triggers QQ
+# [triggers]
+# crons = ["* * * * *"]
+
+[build]
+command = "pnpm cf:build"
+
+[[rules]]
+type = "ESModule"
+globs = ["**/*.js"]
