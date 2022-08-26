@@ -12,6 +12,7 @@
         "format": "prettier --write '**/*.{ts,js,json}' --ignore-path .gitignore",
         "build": "tsup",
         "dev": "tsx watch src",
+        "once": "node -e \"require('./dist/notifier.js').notifier.start().then(() => process.exit())\"",
         "cf:build": "tsup --format esm src/worker.ts",
         "cf:publish": "wrangler publish"
     },
