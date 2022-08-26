@@ -12,17 +12,21 @@
         "format": "prettier --write '**/*.{ts,js,json}' --ignore-path .gitignore",
         "build": "tsup",
         "dev": "tsx watch src",
-        "once": "node -e \"require('./dist/notifier.js').notifier.start().then(() => process.exit())\""
+        "once": "node -e \"require('./dist/notifier.js').notifier.start().then(() => process.exit())\"",
+        "cf:build": "tsup --format esm src/worker.ts",
+        "cf:publish": "wrangler publish"
     },
     "dependencies": {
         "dotenv": "^16.0.1",
         "file-mapping": "^0.2.1",
-        "ntnu-notifier": "^0.5.0"
+        "ntnu-notifier": "^0.5.1"
     },
     "devDependencies": {
+        "@cloudflare/workers-types": "^3.14.1",
         "prettier": "^2.7.1",
         "tsup": "^6.2.3",
-        "tsx": "^3.8.2"
+        "tsx": "^3.8.2",
+        "wrangler": "^2.0.27"
     },
     "engines": {
         "node": ">=18.0.0"

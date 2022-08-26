@@ -1,6 +1,7 @@
 import { config } from "dotenv";
 import { CsieNotifier, News } from "ntnu-notifier";
 import { mapping } from "file-mapping";
+import { send } from "./send";
 
 config();
 
@@ -16,25 +17,5 @@ const notifier = new CsieNotifier(mapping("store.json", []))
         await send(news, WEBHOOK_URL);
         console.log("Sent.", news);
     });
-
-async function send(news: News, webhook: string) {
-    const { ok } = await fetch(webhook, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-            content: null,
-            embeds: [
-                {
-                    title: news.title,
-                    color: 1146518,
-                    description: `[**${news.title}**](${news.url})\n${(news.type || []).join(
-                        " | ",
-                    )}`,
-                },
-            ],
-        }),
-    });
-    return ok;
-}
 
 export { notifier };
