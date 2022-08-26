@@ -1,0 +1,14 @@
+version: "3.9"
+name: "ntnu-discord-notifier"
+
+services:
+  ntnu-discord-notifier:
+    build:
+      context: .
+      target: notifier
+    container_name: ntnu-discord-notifier
+    env_file:
+      - .env
+    volumes:
+      - ./data:/data
+    restart: unless-stopped
