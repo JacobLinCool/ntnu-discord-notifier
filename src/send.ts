@@ -1,3 +1,4 @@
+import fetch from "node-fetch";
 import { News } from "ntnu-notifier";
 
 export async function send(news: News, webhook: string): Promise<boolean> {
